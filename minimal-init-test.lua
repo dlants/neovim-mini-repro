@@ -38,9 +38,22 @@ local env = {
   LOG_LEVEL = "debug"
 }
 
+-- local job_id =
+--   vim.fn.jobstart(
+--   "bun index.ts",
+--   {
+--     cwd = plugin_root,
+--     stdin = "null",
+--     on_exit = log_exit(),
+--     on_stdout = log_job(false),
+--     on_stderr = log_job(true),
+--     env = env
+--   }
+-- )
+
 local job_id =
   vim.fn.jobstart(
-  "bun index.ts",
+  "./venv/bin/python script.py",
   {
     cwd = plugin_root,
     stdin = "null",
