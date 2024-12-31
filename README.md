@@ -1,15 +1,8 @@
-# neovim-mini-repro
+To repro:
 
-To install dependencies:
+set up [bun](https://bun.sh/)
+install deps `bun install`
+start neovim with the minimal config `nvim -n --clean -u minimal-init-test.lua`
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.38. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Observe that the nvim window contains the contents of the short file, not the long file.
+Observe the test.log file, which contains messages sent to nvim_buf_set_lines with the contents of the short & long file, an ack of the short write, but no ack of the long write or any subsequent commands (get_lines)
