@@ -38,22 +38,9 @@ local env = {
   LOG_LEVEL = "debug"
 }
 
--- local job_id =
---   vim.fn.jobstart(
---   "bun index.ts",
---   {
---     cwd = plugin_root,
---     stdin = "null",
---     on_exit = log_exit(),
---     on_stdout = log_job(false),
---     on_stderr = log_job(true),
---     env = env
---   }
--- )
-
 local job_id =
   vim.fn.jobstart(
-  "./venv/bin/python script.py",
+  "bun index-bun.ts",
   {
     cwd = plugin_root,
     stdin = "null",
@@ -64,6 +51,19 @@ local job_id =
   }
 )
 
+-- local job_id =
+--   vim.fn.jobstart(
+--   "npx tsx index-node.ts",
+--   {
+--     cwd = plugin_root,
+--     stdin = "null",
+--     on_exit = log_exit(),
+--     on_stdout = log_job(false),
+--     on_stderr = log_job(true),
+--     env = env
+--   }
+-- )
+--
 if job_id <= 0 then
   vim.api.nvim_err_writeln("Failed to start test server. Error code: " .. job_id)
   return

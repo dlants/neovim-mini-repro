@@ -56,12 +56,12 @@ async function run() {
   };
 
   const shortFile = fs.readFileSync(
-    path.resolve(__filename, "../fixtures/file-small.ts"),
+    path.resolve("./fixtures/file-small.ts"),
   );
   const shortLines = shortFile.toString().split("\n");
 
   const file = fs.readFileSync(
-    path.resolve(__filename, "../fixtures/file-big.ts"),
+    path.resolve("./fixtures/file-big.ts"),
   );
   const lines = file.toString().split("\n");
 
@@ -75,9 +75,11 @@ async function run() {
 
 run().then(
   () => {
+    console.log('success')
     process.exit(0);
   },
-  () => {
+  (err) => {
+    console.error(err);
     process.exit(1);
   },
 );
